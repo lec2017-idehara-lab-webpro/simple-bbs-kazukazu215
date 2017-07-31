@@ -3,32 +3,29 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>New User</title>
+    <title>Point</title>
   </head>
   <body>
 
 <?php
   include_once('database.php');
 
-  if( !isset($_SESSION['login']) || strlen($_SESSION['login']) == 0 )
-  {
-    print "書き込むまえに、<a href='login.php'>ログイン</a>してください";
-    die('</body></html>');
-  }
+  
 
-  // 「uid, mid, eval の生成を試みる。同じ人が同じ書き込みに２度めの評価をしようとすると、プライマリーキーが衝突するが、その際は評価の値を変更する」という SQL 構文
-  // 「on duplicate key 構文」を参照のこと。
-  $q = $db->prepare("insert into evals (uid, mid, eval) values (?, ?, ?) on duplicate key update eval=values(eval)");
-  $q->bind_param("sdd", $_SESSION['login'], $_GET['mid'], $_GET['eval']);
-  $q->execute();
-  if( $q->errno != 0 )
-    print( $q->error );
-  else
-    print("登録しました");
+if($_POST['ten']>10 || $_POST['ten']<1 || 	empty ($_POST['id'])
+|| empty ($_POST['mid'])
+|| empty ($_POST['ten']))
+{
+  print('エラー</br>');
+    print('<a href="login.php">ログイン画面へ戻る</a>');
+}
 
-  print ("<a href='index.php'>掲示板へ</a>");
-
+    $id=$_POST['id'];
+	$mid=$_POST['mid'];
+	$ten=$_POST['ten'];
+	$result = $db->query("insert into evals (mid, uid, eval) values (".$mid.",'".$id."', ".$ten.")");
+	print("投稿完了</br>");
  ?>
-
+ 	   <a href='logout.php'>ログアウト</a></br><hr />
   </body>
 </html>

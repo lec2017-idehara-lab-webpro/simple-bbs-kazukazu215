@@ -10,35 +10,12 @@
 <?php
   include_once('database.php');
 
-  if( !isset($_SESSION['login']) || strlen($_SESSION['login']) == 0 )
-  {
-    print "書き込むまえに、<a href='login.php'>ログイン</a>してください";
-    die('</body></html>');
-  }
+	$id=$_POST['id'];
+	$mes=$_POST['mes'];
 
-  // GET メソッドで res の番号が送られてくることを想定
-  if( !isset($_GET['res']) || strlen($_GET['res']) == 0 )
-    die('無効な呼び出しです</body></html>');
+    $result = $db->query("insert into messages(uid, body, parent) values (".$id.",'".$mes."', 0)");
 
-  $resnr = $_GET['res'];
-  if( $resnr > 0 )
-    print( $resnr . " への返信です。<hr />");
-  else
-    print( "新規書き込み" );
-
-  // 本当は、ログインしていないと書けない
-
-//  if(!isset($_SESSION['login']) || strlen($_SESSION['login'])==0)
-//    die('返信前に<a href="login.php">ログイン</a>してください。</body></html>');
-
-print "
- <form action='postres.php' method='post'>
-   <input type='text' name='mes'>
-   <input type='hidden' name='resnr' value='$resnr'>
-   <input type='submit'>
- </form>
- ";
-?>
-
+ ?>
+  <a href='logout.php'>ログアウト</a></br><hr />
   </body>
 </html>

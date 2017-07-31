@@ -1,8 +1,9 @@
-<?php session_start(); ?>
 <?php
-  session_unset();
-  session_destroy();
+  session_start();
+
+
  ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,14 +12,16 @@
   </head>
   <body>
     <H1>LOGIN</H1>
-    <FORM ACTION="home.php" METHOD="POST">
+	<FORM ACTION="index.php" METHOD="POST">
     <TABLE>
     <TR><TH>ID</TH><TD><INPUT TYPE="TEXT" NAME="id"></TD></TR>
     <TR><TH>Password</TH><TD><INPUT TYPE="PASSWORD" NAME="pass"></TD></TR>
     </TABLE>
-    <INPUT TYPE="submit" VALUE="ログイン">
-    </FORM>
-    <hr />
-    <a href='newuser.php'>新規登録</a>
+	<input type="radio" name="sort" value="1" checked="checked">投稿順</br>
+	<input type="radio" name="sort" value="2" >人気順</br>
+<INPUT TYPE="submit" VALUE="ログイン"></br>
+<p>アカウントが無い方はこちらの<a href="new.php">新規登録</a>を行ってください</p>
+
+    </FORM> 
   </body>
 </html>
