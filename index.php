@@ -57,7 +57,7 @@
 	  }
 	  else if(!$mes['parent']==0)
 	  {
-print($mes['mid']. " : ".$mes['name'] .  " : "  . $mes['body'] .  " : " . $mes['timestamp']."<br />");
+	  print($mes['mid']. " : ".$mes['name'] .  " : "  . $mes['body'] .  " : " . $mes['timestamp']."<br />");
 	  }
 	  }
 	  }
@@ -95,8 +95,12 @@ print($mes['mid']. " : ".$mes['name'] .  " : "  . $mes['body'] .  " : " . $mes['
  ?>
   <form action='res.php' method='post'>
   <p>投稿</p>
-  <TR><TH>あなたのID</TH><TD><input type='text' name='id'></TD></TR></br>
-  <TR><TH>本文</TH><TD><input type='text' name='mes'></TD></TR>
+  <TR><TH>投稿先ID(新スレッドの作成の場合は順番を守ってください)</TH><br/>
+  <TD><input type='text' name='mid'></TD></TR></br>
+  <TR><TH>あなたのID</TH></br>
+  <TD><input type='text' name='id'></TD></TR></br>
+  <TR><TH>本文</TH></br>
+  <TD><input type='text' name='mes'></TD></TR>
    <input type='submit'>
  </form>
  <hr/>
