@@ -12,8 +12,8 @@
 <?php
   include_once('database.php');
 
-   $result = $db->query("select * from users");	
-   while( $user = $result->fetch_assoc()) 
+   $result = $db->query("select uid,password,name from users");	
+  while ( $user = $result->fetch_assoc())
    {
    $id=array();
    $pass=array();
@@ -23,7 +23,6 @@
 
    if($_POST['id']==$id && password_verify($_POST['pass'],$pass))
    {
-   
     print('こんにちは</br>');
 	print($name . "さんでログイン中</br>");	
 	print('<input type="button" value="リロード" onclick="location.reload() ">');
@@ -31,13 +30,12 @@
 	$in=$_POST['sort'];
 	break;
    }
-
    else
    {
    $in=0;
    }
-
    }
+ 
 
    if($in==1)
    {
@@ -60,7 +58,7 @@
 	  print($mes['mid']. " : ".$mes['name'] .  " : "  . $mes['body'] .  " : " . $mes['timestamp']."<br />");
 	  }
 	  }
-	  }
+	}
 
 
 
@@ -71,8 +69,7 @@
 	{
     print($mes['uid']. " : " .$mes['AVG(eval)']."<br />");
     }
-
-   }
+	}
    
 
    print('<hr />');

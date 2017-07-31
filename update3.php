@@ -7,7 +7,7 @@
   </head>
   <body>
   
-<h1>名前変更</h1>
+<h1>パスワード変更</h1>
  <FORM ACTION="update4.php" METHOD="POST">
    本人確認のため、IDを入力してください：</br>
 	<INPUT TYPE="TEXT" NAME="id"></br>
